@@ -7,5 +7,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Memories"
-include(":app")
- 
+include(":presentation")
+include(":data")
+include(":domain")
