@@ -1,11 +1,2 @@
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+include ( ":presentation", ":data", ":domain")
 rootProject.name = "Memories"
-include(":presentation")
-include(":data")
-include(":domain")
