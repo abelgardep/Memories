@@ -42,8 +42,15 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.5.0")
 
+    // Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}")
+
     // Room
     implementation("androidx.room:room-runtime:${Versions.room}")
+    implementation("androidx.room:room-ktx:${Versions.room}")
     kapt("androidx.room:room-compiler:${Versions.room}")
 
     testImplementation("junit:junit:4.13.2")

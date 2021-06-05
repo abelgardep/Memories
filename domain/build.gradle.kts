@@ -37,5 +37,9 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.5.0")
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
+
     testImplementation("junit:junit:4.13.2")
 }

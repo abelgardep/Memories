@@ -10,6 +10,9 @@ object Versions {
     const val minSdk = 26
     const val targetSdk = 30
 
+    const val kotlin = "1.5.10"
+    const val coroutines = "1.4.2"
+
     // UI
     const val compose = "1.0.0-beta08"
 
