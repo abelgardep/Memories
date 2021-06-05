@@ -10,5 +10,9 @@ object Versions {
     const val minSdk = 26
     const val targetSdk = 30
 
-    const val compose = "1.0.0-beta07"
+    // UI
+    const val compose = "1.0.0-beta08"
+
+    // DI
+    const val koin = "3.0.2"
 }

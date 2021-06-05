@@ -37,7 +37,6 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-        useIR = true
     }
 
     buildFeatures {
@@ -53,6 +52,8 @@ dependencies {
     // Domain and Data modules
     implementation(project(":domain"))
     implementation(project(":data"))
+
+    implementation("io.insert-koin:koin-core:${Versions.koin}")
 
     implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
