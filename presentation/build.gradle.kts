@@ -61,7 +61,7 @@ dependencies {
     implementation("androidx.compose.material:material:${Versions.compose}")
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.0-alpha08")
+    implementation("androidx.activity:activity-compose:1.3.0-beta01")
 
     testImplementation("junit:junit:4.13.2")
 
