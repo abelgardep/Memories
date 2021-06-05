@@ -5,6 +5,7 @@ import com.abelgardep.memories.di.localDataSourceModule
 import com.abelgardep.memories.di.repositoryModule
 import com.abelgardep.memories.di.useCaseModule
 import com.abelgardep.memories.di.viewModelModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 
@@ -14,6 +15,9 @@ class MemoriesApp : Application() {
         super.onCreate()
 
         startKoin {
+
+            // use the Android context given there
+            androidContext(this@MemoriesApp)
 
             // module list
             modules(

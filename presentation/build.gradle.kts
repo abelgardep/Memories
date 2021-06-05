@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -53,7 +54,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation("io.insert-koin:koin-core:${Versions.koin}")
+    implementation("io.insert-koin:koin-android:${Versions.koin}")
 
     implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
@@ -63,6 +64,10 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation("androidx.activity:activity-compose:1.3.0-beta01")
+
+    // Room DB
+    implementation("androidx.room:room-runtime:${Versions.room}")
+    kapt("androidx.room:room-compiler:${Versions.room}")
 
     testImplementation("junit:junit:4.13.2")
 

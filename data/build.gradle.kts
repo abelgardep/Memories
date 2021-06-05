@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -13,6 +14,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("int", "dbVersion", Versions.versionDb.toString())
     }
 
     buildTypes {
@@ -38,6 +41,10 @@ dependencies {
     implementation(project(":domain"))
 
     implementation("androidx.core:core-ktx:1.5.0")
+
+    // Room
+    implementation("androidx.room:room-runtime:${Versions.room}")
+    kapt("androidx.room:room-compiler:${Versions.room}")
 
     testImplementation("junit:junit:4.13.2")
 

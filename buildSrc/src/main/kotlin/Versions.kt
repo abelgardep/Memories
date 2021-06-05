@@ -15,4 +15,7 @@ object Versions {
 
     // DI
     const val koin = "3.0.2"
+
+    // Room DB
+    const val room = "2.2.6"
 }
