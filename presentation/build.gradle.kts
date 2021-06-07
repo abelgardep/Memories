@@ -64,6 +64,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation("androidx.activity:activity-compose:1.3.0-beta01")
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha02")
 
     // Room DB
     implementation("androidx.room:room-runtime:${Versions.room}")
