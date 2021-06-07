@@ -33,8 +33,10 @@ class MainActivity : ComponentActivity() {
                         composable(ScreenDestination.Timeline.route) {
                             TimelineScreen(navController)
                         }
-                        composable(ScreenDestination.Details.route) {
-                            ReminderDetailsScreen(navController)
+                        composable(ScreenDestination.Details.route) { backStackEntry ->
+                            val reminderId = backStackEntry.arguments?.getString("reminderId")
+                            requireNotNull(reminderId) { "reminderId parameter wasn't found. Please make sure it's set!" }
+                            ReminderDetailsScreen(navController, reminderId)
                         }
                     }
                 }

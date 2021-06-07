@@ -12,7 +12,7 @@ fun TimelineScreen(
     navController: NavController
 ) {
     Button(
-        onClick = { navController.navigate(ScreenDestination.Details.route) }
+        onClick = { navController.navigate(ScreenDestination.Details.createRoute("123")) }
     ) {
         Text("Timeline")
     }

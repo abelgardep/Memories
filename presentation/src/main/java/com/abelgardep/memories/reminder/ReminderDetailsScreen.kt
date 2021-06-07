@@ -8,11 +8,12 @@ import androidx.navigation.NavController
 
 @Composable
 fun ReminderDetailsScreen(
-    navController: NavController
+    navController: NavController,
+    reminderId: String
 ) {
     Button(
         onClick = { navController.popBackStack() }
     ) {
-        Text("Details - Go back")
+        Text("Details $reminderId - Go back")
     }
 }
