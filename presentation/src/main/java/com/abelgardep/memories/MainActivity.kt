@@ -9,35 +9,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
+import com.abelgardep.memories.navigation.ScreenDestination
 import com.abelgardep.memories.reminder.ReminderDetailsScreen
 import com.abelgardep.memories.timeline.TimelineScreen
 import com.abelgardep.memories.ui.theme.MemoriesTheme
 
+
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             val navController = rememberNavController()
+
             MemoriesTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    NavHost(navController = navController, startDestination = TIMELINE) {
-                        composable(TIMELINE) {
-                            TimelineScreen { navController.navigate(DETAILS) }
+                    NavHost(
+                        navController = navController,
+                        startDestination = ScreenDestination.Timeline.route
+                    ) {
+                        composable(ScreenDestination.Timeline.route) {
+                            TimelineScreen(navController)
                         }
-                        composable(DETAILS) {
-                            ReminderDetailsScreen()
+                        composable(ScreenDestination.Details.route) {
+                            ReminderDetailsScreen(navController)
                         }
                     }
                 }
             }
         }
-    }
-
-    private companion object {
-        private const val DETAILS = "details"
-        private const val TIMELINE = "timeline"
     }
 }
 
@@ -45,6 +47,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MemoriesTheme {
-        TimelineScreen()
+        TimelineScreen(rememberNavController())
     }
 }

@@ -1,19 +1,18 @@
 package com.abelgardep.memories.timeline
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.abelgardep.memories.navigation.ScreenDestination
 
 
 @Composable
 fun TimelineScreen(
-    onReminderClick: () -> Unit = {}
+    navController: NavController
 ) {
-    Column(
-        modifier = Modifier
-            .clickable { onReminderClick() }
+    Button(
+        onClick = { navController.navigate(ScreenDestination.Details.route) }
     ) {
         Text("Timeline")
     }
