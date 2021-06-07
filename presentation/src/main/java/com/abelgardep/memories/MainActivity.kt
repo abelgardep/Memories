@@ -8,10 +8,10 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.abelgardep.memories.navigation.ScreenDestination
-import com.abelgardep.memories.reminder.ReminderDetailsScreen
+import com.abelgardep.memories.navigation.addReminderDetailsGraph
+import com.abelgardep.memories.navigation.addTimelineGraph
 import com.abelgardep.memories.timeline.TimelineScreen
 import com.abelgardep.memories.ui.theme.MemoriesTheme
 
@@ -30,23 +30,8 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = ScreenDestination.Timeline.route
                     ) {
-                        composable(ScreenDestination.Timeline.route) {
-                            TimelineScreen(
-                                showReminderDetails = { reminderId: String ->
-                                    navController.navigate(
-                                        ScreenDestination.Details.createRoute(reminderId)
-                                    )
-                                }
-                            )
-                        }
-                        composable(ScreenDestination.Details.route) { backStackEntry ->
-                            val reminderId = backStackEntry.arguments?.getString("reminderId")
-                            requireNotNull(reminderId) { "reminderId parameter wasn't found. Please make sure it's set!" }
-                            ReminderDetailsScreen(
-                                navigateUp = { navController.popBackStack() },
-                                reminderId
-                            )
-                        }
+                        addTimelineGraph(navController)
+                        addReminderDetailsGraph(navController)
                     }
                 }
             }
