@@ -31,12 +31,21 @@ class MainActivity : ComponentActivity() {
                         startDestination = ScreenDestination.Timeline.route
                     ) {
                         composable(ScreenDestination.Timeline.route) {
-                            TimelineScreen(navController)
+                            TimelineScreen(
+                                showReminderDetails = { reminderId: String ->
+                                    navController.navigate(
+                                        ScreenDestination.Details.createRoute(reminderId)
+                                    )
+                                }
+                            )
                         }
                         composable(ScreenDestination.Details.route) { backStackEntry ->
                             val reminderId = backStackEntry.arguments?.getString("reminderId")
                             requireNotNull(reminderId) { "reminderId parameter wasn't found. Please make sure it's set!" }
-                            ReminderDetailsScreen(navController, reminderId)
+                            ReminderDetailsScreen(
+                                navigateUp = { navController.popBackStack() },
+                                reminderId
+                            )
                         }
                     }
                 }
@@ -49,6 +58,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MemoriesTheme {
-        TimelineScreen(rememberNavController())
+        TimelineScreen(showReminderDetails = {})
     }
 }
