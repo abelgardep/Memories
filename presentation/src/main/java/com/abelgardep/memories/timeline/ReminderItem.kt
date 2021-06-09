@@ -1,19 +1,23 @@
 package com.abelgardep.memories.timeline
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abelgardep.memories.domain.model.Reminder
-import com.abelgardep.memories.extensions.toLegibleStringLong
+import com.abelgardep.memories.extensions.toLegibleStringShort
 import java.time.LocalDate
 
 
@@ -35,9 +39,14 @@ fun ReminderItem(
                 .clickable(onClick = { onReminderClick(reminder) })
                 .padding(16.dp)
         ) {
-            ReminderDateItem(localDate = reminder.date, modifier = modifier)
+            ReminderDateItem(
+                localDate = reminder.date,
+                modifier = modifier.align(Alignment.CenterVertically)
+            )
             Spacer(modifier = Modifier.padding(8.dp))
-            Column {
+            Column(
+                modifier = modifier.align(Alignment.CenterVertically)
+            ) {
                 Text(
                     text = reminder.name,
                     style = MaterialTheme.typography.h6,
@@ -60,7 +69,9 @@ fun ReminderDateItem(
     localDate: LocalDate,
     modifier: Modifier
 ) {
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         Text(
             modifier = modifier.align(CenterHorizontally),
             text = localDate.dayOfMonth.toString(),
@@ -70,17 +81,10 @@ fun ReminderDateItem(
         )
         Text(
             modifier = modifier.align(CenterHorizontally),
-            text = localDate.month.toLegibleStringLong(),
+            text = localDate.month.toLegibleStringShort(),
             style = MaterialTheme.typography.body2,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
-        )
-        Text(
-            modifier = modifier.align(CenterHorizontally),
-            text = localDate.year.toString(),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            style = MaterialTheme.typography.body2
         )
     }
 }
