@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Memories</string>
 
-    <string name="reminders_in_month_number">%d Reminders</string>
+    <!-- Reminder Sticky Header -->
+    <string name="reminder_sticky_header_reminders_in_month">%d Reminders</string>
+
+    <!-- Timeline -->
+    <string name="timeline_add_new_reminder_fab">Add new reminder</string>
 </resources>

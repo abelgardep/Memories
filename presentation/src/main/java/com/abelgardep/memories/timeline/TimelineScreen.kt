@@ -5,21 +5,42 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.abelgardep.memories.R
 import com.abelgardep.memories.domain.model.Reminder
 import com.abelgardep.memories.ui.theme.MemoriesTheme
 import java.time.LocalDate
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TimelineScreen(
+    showReminderDetails: (reminderId: String) -> Unit,
+    onAddNewReminderClick: () -> Unit
+) {
+    Scaffold(
+        content = {
+            TimelineScreenContent(showReminderDetails = showReminderDetails)
+        },
+        floatingActionButton = {
+            AddNewReminderFAB(onAddNewReminderClick = onAddNewReminderClick)
+        },
+        floatingActionButtonPosition = FabPosition.End
+    )
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun TimelineScreenContent(
     showReminderDetails: (reminderId: String) -> Unit
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(16.dp, 16.dp, 16.dp, 80.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         val remindersGroupedByMonth = fakeList.groupBy { it.date.month }
@@ -36,11 +57,27 @@ fun TimelineScreen(
     }
 }
 
+@Composable
+fun AddNewReminderFAB(
+    onAddNewReminderClick: () -> Unit
+) {
+    ExtendedFloatingActionButton(
+        text = { Text(stringResource(id = R.string.timeline_add_new_reminder_fab)) },
+        icon = {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = stringResource(id = R.string.timeline_add_new_reminder_fab)
+            )
+        },
+        onClick = onAddNewReminderClick
+    )
+}
+
 @Preview
 @Composable
 fun TimeLineScreenPreview() {
     MemoriesTheme {
-        TimelineScreen {}
+        TimelineScreen(showReminderDetails = {}, onAddNewReminderClick = {})
     }
 }
 

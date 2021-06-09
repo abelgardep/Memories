@@ -13,6 +13,11 @@ fun NavGraphBuilder.addTimelineGraph(navController: NavController) {
                 navController.navigate(
                     ScreenDestination.Details.createRoute(reminderId)
                 )
+            },
+            onAddNewReminderClick = {
+                navController.navigate(
+                    ScreenDestination.AddNewReminder.route
+                )
             }
         )
     }

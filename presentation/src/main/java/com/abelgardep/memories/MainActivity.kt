@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.abelgardep.memories.navigation.ScreenDestination
+import com.abelgardep.memories.navigation.addNewReminderGraph
 import com.abelgardep.memories.navigation.addReminderDetailsGraph
 import com.abelgardep.memories.navigation.addTimelineGraph
 import com.abelgardep.memories.timeline.TimelineScreen
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         addTimelineGraph(navController)
                         addReminderDetailsGraph(navController)
+                        addNewReminderGraph()
                     }
                 }
             }
@@ -43,6 +45,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MemoriesTheme {
-        TimelineScreen(showReminderDetails = {})
+        TimelineScreen(showReminderDetails = {}, onAddNewReminderClick = {})
     }
 }
