@@ -1,5 +1,6 @@
 package com.abelgardep.memories.timeline
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,6 +13,7 @@ import com.abelgardep.memories.ui.theme.MemoriesTheme
 import java.time.LocalDate
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TimelineScreen(
     showReminderDetails: (reminderId: String) -> Unit
@@ -20,10 +22,16 @@ fun TimelineScreen(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        items(fakeList) {
-            ReminderItem(
-                reminder = it,
-                onReminderClick = { reminder: Reminder -> showReminderDetails(reminder.id.toString()) })
+        val remindersGroupedByMonth = fakeList.groupBy { it.date.month }
+        remindersGroupedByMonth.forEach { (month, remindersInMonth) ->
+            stickyHeader {
+                ReminderStickyHeader(month = month, remindersInMonth = remindersInMonth.size)
+            }
+            items(remindersInMonth) {
+                ReminderItem(
+                    reminder = it,
+                    onReminderClick = { reminder: Reminder -> showReminderDetails(reminder.id.toString()) })
+            }
         }
     }
 }

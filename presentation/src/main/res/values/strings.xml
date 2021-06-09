@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Memories</string>
+
+    <string name="reminders_in_month_number">%d Reminders</string>
 </resources>
