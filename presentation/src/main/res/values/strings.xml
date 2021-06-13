@@ -9,4 +9,7 @@
 
     <!-- Reminder details -->
     <string name="reminder_details_title">Reminder Details</string>
+
+    <!-- New Reminder -->
+    <string name="add_new_reminder_title">New reminder</string>
 </resources>

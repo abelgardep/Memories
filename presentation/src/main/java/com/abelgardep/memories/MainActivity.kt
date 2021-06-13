@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         addTimelineGraph(navController)
                         addReminderDetailsGraph(navController)
-                        addNewReminderGraph()
+                        addNewReminderGraph(navController)
                     }
                 }
             }
