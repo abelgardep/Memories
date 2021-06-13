@@ -7,6 +7,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -15,6 +19,7 @@ import com.abelgardep.memories.R
 import com.abelgardep.memories.components.ActionEdit
 import com.abelgardep.memories.components.BackIcon
 import com.abelgardep.memories.components.BaseTopBar
+import com.abelgardep.memories.components.WorkInProgressDialog
 import com.abelgardep.memories.extensions.toLegibleStringLong
 import com.abelgardep.memories.timeline.fakeReminder
 
@@ -24,6 +29,11 @@ fun ReminderDetailsScreen(
     navigateUp: () -> Unit,
     reminderId: String
 ) {
+    var showWorkInProgressDialog by rememberSaveable { mutableStateOf(false) }
+    if (showWorkInProgressDialog) {
+        WorkInProgressDialog(onDismiss = { showWorkInProgressDialog = false })
+    }
+
     Scaffold(
         topBar = {
             BaseTopBar(
@@ -31,7 +41,7 @@ fun ReminderDetailsScreen(
                 navigationIcon = {
                     BackIcon(onBackClick = { navigateUp() })
                 },
-                actions = { ActionEdit(onEditClick = { /* TODO */ }) }
+                actions = { ActionEdit(onEditClick = { showWorkInProgressDialog = true }) }
             )
         },
         content = { ReminderDetailsContent(reminderId) }
