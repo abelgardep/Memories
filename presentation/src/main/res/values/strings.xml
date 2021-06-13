@@ -6,4 +6,7 @@
 
     <!-- Timeline -->
     <string name="timeline_add_new_reminder_fab">Add new reminder</string>
+
+    <!-- Reminder details -->
+    <string name="reminder_details_title">Reminder Details</string>
 </resources>

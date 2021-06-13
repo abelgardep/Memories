@@ -14,3 +14,6 @@ fun Month.toLegibleStringLong() =
         .capitalize(java.util.Locale.getDefault())
 
 fun LocalDate.toLegibleStringNoYear() = "$dayOfMonth ${month.toLegibleStringLong()}"
+
+fun LocalDate.toLegibleStringLong() = "$dayOfMonth ${month.toLegibleStringLong()} $year"
+
