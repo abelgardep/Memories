@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Memories</string>
 
+    <string name="global_ok">OK</string>
+    <string name="global_cancel">Cancel</string>
+    <string name="global_done">Done</string>
+
     <!-- Reminder Sticky Header -->
     <string name="reminder_sticky_header_reminders_in_month">%d Reminders</string>
 
@@ -12,4 +16,7 @@
 
     <!-- New Reminder -->
     <string name="add_new_reminder_title">New reminder</string>
+    <string name="add_new_reminder_name">Reminder\'s name</string>
+    <string name="add_new_reminder_description">Reminder\'s description</string>
+    <string name="add_new_reminder_date">Reminder\'s date</string>
 </resources>
