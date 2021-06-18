@@ -64,8 +64,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     implementation("androidx.compose.runtime:runtime-livedata:${Versions.compose}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.0-beta01")
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha02")
+    implementation("androidx.activity:activity-compose:1.3.0-beta02")
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha03")
 
     // Date picker
     implementation("io.github.vanpra.compose-material-dialogs:datetime:0.4.2")

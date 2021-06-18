@@ -14,7 +14,7 @@ object Versions {
     const val coroutines = "1.4.2"
 
     // UI
-    const val compose = "1.0.0-beta08"
+    const val compose = "1.0.0-beta09"
 
     // DI
     const val koin = "3.0.2"

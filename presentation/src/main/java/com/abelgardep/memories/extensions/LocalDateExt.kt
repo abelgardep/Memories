@@ -2,18 +2,19 @@ package com.abelgardep.memories.extensions
 
 import java.time.LocalDate
 import java.time.Month
+import java.time.format.TextStyle
+import java.util.*
 
 
 fun Month.toLegibleStringShort() =
-    getDisplayName(java.time.format.TextStyle.SHORT, java.util.Locale.getDefault())
+    getDisplayName(TextStyle.SHORT, Locale.getDefault())
         .trimEnd('.')
-        .capitalize(java.util.Locale.getDefault())
+        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 
 fun Month.toLegibleStringLong() =
-    getDisplayName(java.time.format.TextStyle.FULL, java.util.Locale.getDefault())
-        .capitalize(java.util.Locale.getDefault())
+    getDisplayName(TextStyle.FULL, Locale.getDefault())
+        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 
 fun LocalDate.toLegibleStringNoYear() = "$dayOfMonth ${month.toLegibleStringLong()}"
 
 fun LocalDate.toLegibleStringLong() = "$dayOfMonth ${month.toLegibleStringLong()} $year"
-
