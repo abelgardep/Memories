@@ -15,8 +15,10 @@ import com.abelgardep.memories.navigation.addReminderDetailsGraph
 import com.abelgardep.memories.navigation.addTimelineGraph
 import com.abelgardep.memories.timeline.TimelineScreen
 import com.abelgardep.memories.ui.theme.MemoriesTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

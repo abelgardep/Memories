@@ -9,9 +9,10 @@ import com.abelgardep.memories.domain.model.Reminder
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
+import javax.inject.Inject
 
 
-class ReminderLocalDatasourceImpl(
+class ReminderLocalDatasourceImpl @Inject constructor(
     private val reminderDao: ReminderDao,
 ) : IReminderLocalDatasource {
 

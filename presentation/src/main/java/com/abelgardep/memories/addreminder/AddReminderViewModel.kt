@@ -3,10 +3,20 @@ package com.abelgardep.memories.addreminder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.abelgardep.memories.domain.model.Reminder
+import com.abelgardep.memories.domain.usecases.reminder.AddReminderUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
+import javax.inject.Inject
 
 
-class AddReminderViewModel : ViewModel() {
+@HiltViewModel
+class AddReminderViewModel @Inject constructor(
+    private val addReminderUseCase: AddReminderUseCase
+) : ViewModel() {
 
     private val _reminderName: MutableLiveData<String> = MutableLiveData("")
     val reminderName: LiveData<String> = _reminderName
@@ -35,8 +45,19 @@ class AddReminderViewModel : ViewModel() {
         enableButtonWhenMandatoryFieldsFilled()
     }
 
-    fun createReminder(){
-        // TODO: Connect with usecases
+    fun createReminder() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = addReminderUseCase.execute(
+                AddReminderUseCase.Params(
+                    Reminder(
+                        id = null,
+                        name = _reminderName.value!!,
+                        description = _reminderDescription.value,
+                        date = _reminderDate.value!!
+                    )
+                )
+            )
+        }
     }
 
     private fun enableButtonWhenMandatoryFieldsFilled() {

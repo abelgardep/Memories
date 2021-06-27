@@ -26,9 +26,9 @@ import java.time.LocalDate
 
 @Composable
 fun AddNewReminderScreen(
+    addReminderViewModel: AddReminderViewModel,
     navigateUp: () -> Unit,
 ) {
-    val addReminderViewModel = AddReminderViewModel()
 
     var showWorkInProgressDialog by rememberSaveable { mutableStateOf(false) }
     if (showWorkInProgressDialog) {

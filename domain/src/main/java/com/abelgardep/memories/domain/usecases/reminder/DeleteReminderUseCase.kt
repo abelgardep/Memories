@@ -2,9 +2,10 @@ package com.abelgardep.memories.domain.usecases.reminder
 
 import com.abelgardep.memories.domain.repository.IReminderRepository
 import com.abelgardep.memories.domain.usecases.BaseAsyncUseCase
+import javax.inject.Inject
 
 
-class DeleteReminderUseCase(
+class DeleteReminderUseCase @Inject constructor(
     private val reminderRepository: IReminderRepository
 ) : BaseAsyncUseCase<DeleteReminderUseCase.Params, Unit>() {
 

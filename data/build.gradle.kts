@@ -42,6 +42,9 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.5.0")
 
+    implementation("com.google.dagger:hilt-android:2.37")
+    kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
+
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}")

@@ -4,9 +4,10 @@ import com.abelgardep.memories.domain.model.Reminder
 import com.abelgardep.memories.domain.repository.IReminderRepository
 import com.abelgardep.memories.domain.usecases.BaseAsyncUseCase
 import java.time.LocalDate
+import javax.inject.Inject
 
 
-class GetRemindersFromSpecificDayUseCase(
+class GetRemindersFromSpecificDayUseCase @Inject constructor(
     private val reminderRepository: IReminderRepository
 ) : BaseAsyncUseCase<GetRemindersFromSpecificDayUseCase.Params, List<Reminder>>() {
 
