@@ -14,10 +14,10 @@ object Versions {
     const val coroutines = "1.4.2"
 
     // UI
-    const val compose = "1.0.0-beta09"
+    const val compose = "1.0.0-rc01"
 
     // DI
-    const val koin = "3.0.2"
+    const val hilt = "2.37"
 
     // Room DB
     const val room = "2.2.6"
