@@ -13,37 +13,14 @@ import com.abelgardep.memories.domain.repository.IReminderRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
 import javax.inject.Singleton
 
 
-val localDataSourceModule = module {
-    // Database
-    single {
-        val dbBuilder = Room.databaseBuilder(
-            androidContext(),
-            MemoriesDatabase::class.java,
-            BuildConfig.APPLICATION_ID
-        ).apply {
-            addMigrations(*DB_MIGRATIONS)
-        }
-        dbBuilder.build()
-    }
-
-    // Dao
-    single { get<MemoriesDatabase>().reminderDao() }
-
-    // Local data sources
-    single<IReminderLocalDatasource> { ReminderLocalDatasourceImpl(get()) }
-}
-
 @Module
 @InstallIn(SingletonComponent::class)
-object LocalDataSourceModule {
+object MemoriesModule {
 
     @Singleton
     @Provides

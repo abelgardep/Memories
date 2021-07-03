@@ -40,6 +40,9 @@ class ReminderLocalDatasourceImpl @Inject constructor(
             entity.toModel()
         }
 
+    override suspend fun getReminderById(reminderId: Int): Reminder =
+        reminderDao.getReminderById(reminderId).toModel()
+
     override suspend fun clear() {
         reminderDao.clear()
     }

@@ -20,9 +20,9 @@ interface ReminderDao {
     @Query(GET_ALL_REMINDERS_QUERY)
     fun getAllReminders(): Flow<List<ReminderEntity>>
 
-    /**
-     * At the moment, we are only interested in day and month, not year.
-     */
+    @Query(GET_REMINDER_BY_ID_QUERY)
+    fun getReminderById(reminderId: Int): ReminderEntity
+
     @Query(GET_REMINDERS_FROM_DAY_QUERY)
     fun getRemindersFromDay(day: Int, month: Int): List<ReminderEntity>
 
@@ -37,6 +37,10 @@ interface ReminderDao {
         private const val GET_ALL_REMINDERS_QUERY =
             "SELECT * FROM ${ReminderEntity.TABLE_NAME} " +
                     "ORDER BY month, day"
+
+        private const val GET_REMINDER_BY_ID_QUERY =
+            "SELECT * FROM ${ReminderEntity.TABLE_NAME} " +
+                    "WHERE id = :reminderId"
 
         private const val GET_REMINDERS_FROM_DAY_QUERY =
             "SELECT * FROM ${ReminderEntity.TABLE_NAME} " +

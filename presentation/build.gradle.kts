@@ -55,8 +55,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation("io.insert-koin:koin-android:${Versions.koin}")
-
+    // Hilt
     implementation("com.google.dagger:hilt-android:2.37")
     kapt("com.google.dagger:hilt-android-compiler:2.37")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")

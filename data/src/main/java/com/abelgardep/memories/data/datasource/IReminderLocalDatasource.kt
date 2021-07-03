@@ -11,6 +11,7 @@ interface IReminderLocalDatasource {
 
     suspend fun getAllReminders(): Flow<List<Reminder>>
     suspend fun getRemindersFromDay(date: LocalDate): List<Reminder>
+    suspend fun getReminderById(reminderId: Int): Reminder
 
     suspend fun clear()
 }

@@ -10,5 +10,6 @@ interface IReminderRepository {
     suspend fun deleteReminder(reminderId: Int)
 
     suspend fun getAllReminders(): Flow<List<Reminder>>
+    suspend fun getReminderById(reminderId: Int): Reminder
     suspend fun getRemindersFromDay(day: LocalDate): List<Reminder>
 }
