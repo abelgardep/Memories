@@ -40,7 +40,7 @@ dependencies {
     // Domain module
     implementation(project(":domain"))
 
-    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.core:core-ktx:1.6.0")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:${Versions.hilt}")
@@ -59,5 +59,5 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
 }

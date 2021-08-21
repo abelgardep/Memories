@@ -10,11 +10,11 @@ object Versions {
     const val minSdk = 26
     const val targetSdk = 30
 
-    const val kotlin = "1.5.10"
+    const val kotlin = "1.5.21"
     const val coroutines = "1.4.2"
 
     // UI
-    const val compose = "1.0.0-rc01"
+    const val compose = "1.0.1"
 
     // DI
     const val hilt = "2.37"
