@@ -14,6 +14,9 @@ fun NavGraphBuilder.addNewReminderGraph(navController: NavController) {
         AddNewReminderScreen(
             addReminderViewModel = addReminderViewModel,
             navigateUp = { navController.popBackStack() },
+            onNewReminderAdded = {
+                navController.navigateUp()
+            }
         )
     }
 }

@@ -28,6 +28,7 @@ import java.time.LocalDate
 fun AddNewReminderScreen(
     addReminderViewModel: AddReminderViewModel,
     navigateUp: () -> Unit,
+    onNewReminderAdded: () -> Unit,
 ) {
 
     var showWorkInProgressDialog by rememberSaveable { mutableStateOf(false) }
@@ -45,13 +46,14 @@ fun AddNewReminderScreen(
                 actions = { }
             )
         },
-        content = { AddReminderContent(addReminderViewModel) }
+        content = { AddReminderContent(addReminderViewModel, onNewReminderAdded) }
     )
 }
 
 @Composable
 fun AddReminderContent(
-    addReminderViewModel: AddReminderViewModel
+    addReminderViewModel: AddReminderViewModel,
+    onNewReminderAdded: () -> Unit,
 ) {
     val nameState: String by addReminderViewModel.reminderName.observeAsState("")
     val dateState: LocalDate by addReminderViewModel.reminderDate.observeAsState(LocalDate.now())
@@ -106,7 +108,10 @@ fun AddReminderContent(
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter),
             enabled = buttonEnabledState,
-            onClick = { addReminderViewModel.createReminder() }
+            onClick = {
+                addReminderViewModel.createReminder()
+                onNewReminderAdded()
+            }
         ) {
             Text(text = stringResource(id = R.string.global_done).uppercase())
         }
