@@ -46,7 +46,10 @@ fun ReminderStickyHeader(
                     .align(CenterVertically)
                     .weight(1f)
                     .wrapContentWidth(Alignment.End),
-                text = stringResource(id = R.string.reminder_sticky_header_reminders_in_month, remindersInMonth),
+                text = stringResource(
+                    id = R.string.reminder_sticky_header_reminders_in_month,
+                    remindersInMonth
+                ),
                 style = MaterialTheme.typography.subtitle1,
             )
         }

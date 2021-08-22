@@ -10,5 +10,6 @@ sealed class ScreenDestination(val route: String) {
     object Details : ScreenDestination("{reminderId}/details") {
         fun createRoute(reminderId: Int) = "$reminderId/details"
     }
+
     object AddNewReminder : ScreenDestination("addNewReminder")
 }
