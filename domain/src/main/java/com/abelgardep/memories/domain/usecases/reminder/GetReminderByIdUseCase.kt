@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class GetReminderByIdUseCase @Inject constructor(
     private val reminderRepository: IReminderRepository
-) : BaseAsyncUseCase<GetReminderByIdUseCase.Params, Reminder>() {
+) : BaseAsyncUseCase<GetReminderByIdUseCase.Params, Reminder?>() {
 
     override suspend fun call(params: Params) =
         reminderRepository.getReminderById(params.reminderId)

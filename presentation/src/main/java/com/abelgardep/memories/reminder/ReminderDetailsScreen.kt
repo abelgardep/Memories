@@ -8,6 +8,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -20,19 +21,23 @@ import com.abelgardep.memories.components.ActionEdit
 import com.abelgardep.memories.components.BackIcon
 import com.abelgardep.memories.components.BaseTopBar
 import com.abelgardep.memories.components.WorkInProgressDialog
+import com.abelgardep.memories.domain.model.Reminder
 import com.abelgardep.memories.extensions.toLegibleStringLong
 import com.abelgardep.memories.timeline.fakeReminder
 
 
 @Composable
 fun ReminderDetailsScreen(
+    reminderDetailsViewModel: ReminderDetailsViewModel,
     navigateUp: () -> Unit,
-    reminderId: String
+    reminderId: Int,
 ) {
     var showWorkInProgressDialog by rememberSaveable { mutableStateOf(false) }
     if (showWorkInProgressDialog) {
         WorkInProgressDialog(onDismiss = { showWorkInProgressDialog = false })
     }
+
+    reminderDetailsViewModel.fetchReminderWithId(reminderId)
 
     Scaffold(
         topBar = {
@@ -44,16 +49,20 @@ fun ReminderDetailsScreen(
                 actions = { ActionEdit(onEditClick = { showWorkInProgressDialog = true }) }
             )
         },
-        content = { ReminderDetailsContent(reminderId) }
+        content = {
+            ReminderDetailsContent(
+                reminderDetailsViewModel = reminderDetailsViewModel,
+            )
+        }
     )
 
 }
 
 @Composable
 fun ReminderDetailsContent(
-    reminderId: String
+    reminderDetailsViewModel: ReminderDetailsViewModel,
 ) {
-    val reminder = fakeReminder // viewmodel.getReminder(id = reminderId)
+    val reminder: Reminder by reminderDetailsViewModel.reminder.observeAsState(fakeReminder)
 
     Column(
         modifier = Modifier

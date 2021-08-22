@@ -13,7 +13,7 @@ fun NavGraphBuilder.addTimelineGraph(navController: NavController) {
         val timelineViewModel = hiltViewModel<TimelineViewModel>()
         TimelineScreen(
             timelineViewModel,
-            showReminderDetails = { reminderId: String ->
+            showReminderDetails = { reminderId: Int ->
                 navController.navigate(
                     ScreenDestination.Details.createRoute(reminderId)
                 )

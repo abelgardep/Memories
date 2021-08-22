@@ -22,7 +22,7 @@ class ReminderRepositoryImpl(
         return reminderLocalDataSource.getAllReminders()
     }
 
-    override suspend fun getReminderById(reminderId: Int): Reminder =
+    override suspend fun getReminderById(reminderId: Int): Reminder? =
         reminderLocalDataSource.getReminderById(reminderId)
 
     override suspend fun getRemindersFromDay(day: LocalDate): List<Reminder> {

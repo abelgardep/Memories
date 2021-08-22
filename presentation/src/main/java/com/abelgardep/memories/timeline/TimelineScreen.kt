@@ -25,12 +25,15 @@ import java.time.LocalDate
 @Composable
 fun TimelineScreen(
     timelineViewModel: TimelineViewModel,
-    showReminderDetails: (reminderId: String) -> Unit,
+    showReminderDetails: (reminderId: Int) -> Unit,
     onAddNewReminderClick: () -> Unit
 ) {
     Scaffold(
         content = {
-            TimelineScreenContent(timelineViewModel = timelineViewModel, showReminderDetails = showReminderDetails)
+            TimelineScreenContent(
+                timelineViewModel = timelineViewModel,
+                showReminderDetails = showReminderDetails
+            )
         },
         floatingActionButton = {
             AddNewReminderFAB(onAddNewReminderClick = onAddNewReminderClick)
@@ -43,7 +46,7 @@ fun TimelineScreen(
 @Composable
 fun TimelineScreenContent(
     timelineViewModel: TimelineViewModel,
-    showReminderDetails: (reminderId: String) -> Unit
+    showReminderDetails: (reminderId: Int) -> Unit
 ) {
     val timelineViewState by timelineViewModel.getAllRemindersLiveData.observeAsState(initialState)
     val remindersGroupedByMonth = timelineViewState.listOfReminders.groupBy { it.date.month }
@@ -59,7 +62,7 @@ fun TimelineScreenContent(
             items(remindersInMonth) {
                 ReminderItem(
                     reminder = it,
-                    onReminderClick = { reminder: Reminder -> showReminderDetails(reminder.id.toString()) })
+                    onReminderClick = { reminder: Reminder -> showReminderDetails(reminder.id!!) })
             }
         }
     }

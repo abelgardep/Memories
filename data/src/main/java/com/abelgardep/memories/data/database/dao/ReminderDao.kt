@@ -21,7 +21,7 @@ interface ReminderDao {
     fun getAllReminders(): Flow<List<ReminderEntity>>
 
     @Query(GET_REMINDER_BY_ID_QUERY)
-    fun getReminderById(reminderId: Int): ReminderEntity
+    fun getReminderById(reminderId: Int): ReminderEntity?
 
     @Query(GET_REMINDERS_FROM_DAY_QUERY)
     fun getRemindersFromDay(day: Int, month: Int): List<ReminderEntity>
