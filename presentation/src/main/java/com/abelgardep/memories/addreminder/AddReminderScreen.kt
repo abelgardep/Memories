@@ -6,9 +6,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -17,7 +14,6 @@ import com.abelgardep.memories.R
 import com.abelgardep.memories.components.BackIcon
 import com.abelgardep.memories.components.BaseTopBar
 import com.abelgardep.memories.components.OutlinedTextFieldWithDatePicker
-import com.abelgardep.memories.components.WorkInProgressDialog
 import com.abelgardep.memories.extensions.toLegibleStringLong
 import com.vanpra.composematerialdialogs.buttons
 import com.vanpra.composematerialdialogs.datetime.datepicker.datepicker
@@ -30,12 +26,6 @@ fun AddNewReminderScreen(
     navigateUp: () -> Unit,
     onNewReminderAdded: () -> Unit,
 ) {
-
-    var showWorkInProgressDialog by rememberSaveable { mutableStateOf(false) }
-    if (showWorkInProgressDialog) {
-        WorkInProgressDialog(onDismiss = { showWorkInProgressDialog = false })
-    }
-
     Scaffold(
         topBar = {
             BaseTopBar(
