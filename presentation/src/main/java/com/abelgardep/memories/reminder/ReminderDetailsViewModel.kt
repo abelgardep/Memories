@@ -1,6 +1,5 @@
 package com.abelgardep.memories.reminder
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +25,6 @@ class ReminderDetailsViewModel @Inject constructor(
             val result = getReminderByIdUseCase.execute(
                 GetReminderByIdUseCase.Params(reminderId = id)
             )
-            Log.d("DETAILS", result.toString())
             result.fold(
                 failAction = {},
                 successAction = {
