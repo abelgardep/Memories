@@ -72,9 +72,6 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.3.1")
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha06")
 
-    // Date picker
-    implementation("io.github.vanpra.compose-material-dialogs:datetime:0.4.3")
-
     // Room DB
     implementation("androidx.room:room-runtime:${Versions.room}")
     kapt("androidx.room:room-compiler:${Versions.room}")

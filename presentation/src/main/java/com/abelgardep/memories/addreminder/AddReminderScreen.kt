@@ -15,8 +15,6 @@ import com.abelgardep.memories.components.BackIcon
 import com.abelgardep.memories.components.BaseTopBar
 import com.abelgardep.memories.components.OutlinedTextFieldWithDatePicker
 import com.abelgardep.memories.extensions.toLegibleStringLong
-import com.vanpra.composematerialdialogs.buttons
-import com.vanpra.composematerialdialogs.datetime.datepicker.datepicker
 import java.time.LocalDate
 
 
@@ -78,20 +76,9 @@ fun AddReminderContent(
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextFieldWithDatePicker(
                 currentState = dateState.toLegibleStringLong(),
-                label = stringResource(id = R.string.add_new_reminder_date)
-            ) {
-                datepicker(
-                    title = stringResource(id = R.string.add_new_reminder_date),
-                    waitForPositiveButton = false
-                ) { localDate ->
-                    addReminderViewModel.onDateSet(localDate)
-                }
-
-                buttons {
-                    positiveButton(stringResource(id = R.string.global_ok))
-                    negativeButton(stringResource(id = R.string.global_cancel))
-                }
-            }
+                label = stringResource(id = R.string.add_new_reminder_date),
+                onDateSet = { date -> addReminderViewModel.onDateSet(date = date) }
+            )
         }
         Button(
             modifier = Modifier

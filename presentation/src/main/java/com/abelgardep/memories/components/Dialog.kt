@@ -6,10 +6,17 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
-import com.vanpra.composematerialdialogs.MaterialDialog
+import androidx.compose.ui.platform.LocalContext
+import com.abelgardep.memories.MainActivity
+import com.abelgardep.memories.R
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 @Composable
@@ -37,18 +44,31 @@ fun WorkInProgressDialog(
 fun OutlinedTextFieldWithDatePicker(
     label: String,
     currentState: String,
-    content: @Composable MaterialDialog.() -> Unit
+    onDateSet: (date: LocalDate) -> Unit,
 ) {
-    val dialog = remember { MaterialDialog() }
-    dialog.build(content = content)
+    val context = LocalContext.current as MainActivity
+
+    val materialAlertDialog = MaterialDatePicker.Builder.datePicker()
+        .setTitleText(R.string.add_new_reminder_date)
+        .setSelection(Date().time)
+        .build()
+
+    materialAlertDialog.addOnPositiveButtonClickListener {
+        val selectedDateInSeconds = TimeUnit.SECONDS.convert(it, TimeUnit.MILLISECONDS)
+        onDateSet(
+            LocalDateTime.ofEpochSecond(selectedDateInSeconds, 0, ZoneOffset.UTC).toLocalDate()
+        )
+    }
 
     OutlinedTextField(
         readOnly = true,
         modifier = Modifier
             .fillMaxWidth()
-            .onFocusChanged { if (it.isFocused) dialog.show() },
+            .onFocusChanged {
+                if (it.isFocused) materialAlertDialog.show(context.supportFragmentManager, null)
+            },
         value = currentState,
-        onValueChange = { dialog.hide() },
+        onValueChange = { materialAlertDialog.dismiss() },
         label = { Text(label) }
     )
 }
